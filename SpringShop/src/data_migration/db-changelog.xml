@@ -1,0 +1,205 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="vysu0216 (generated)" id="1505138856218-1">
+        <preConditions onFail="MARK_RAN">
+            <not><sequenceExists schemaName="public" sequenceName="PRODUCT_SEQUENCE" /></not>
+        </preConditions>
+        <createSequence cacheSize="20" cycle="false" incrementBy="1" maxValue="100000" minValue="1" sequenceName="PRODUCT_SEQUENCE" startValue="21"/>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-2">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="ADDRESS_UNIT" /></not>
+        </preConditions>
+        <createTable tableName="ADDRESS_UNIT">
+            <column name="ADDRESS_UNIT_ID" type="NUMBER(7, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="Home address" name="ADDRESS_NAME" type="VARCHAR2(20 BYTE)"/>
+            <column name="COUNTRY_CODE" type="VARCHAR2(5 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ADDRESS" type="VARCHAR2(100 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="POSTAL_CODE" type="NUMBER(6, 0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-3">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="CART" /></not>
+        </preConditions>
+        <createTable tableName="CART">
+            <column name="CART_ID" type="NUMBER(11, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CUSTOMER_LOGIN" type="VARCHAR2(100 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ORDER_DATE" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="Order created" name="STATUS" type="VARCHAR2(20 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ORDER_PRICE" type="NUMBER(18, 2)"/>
+            <column name="DELIVERY_ADDRESS_ID" type="NUMBER(7, 0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-4">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="CATEGORY" /></not>
+        </preConditions>
+        <createTable tableName="CATEGORY">
+            <column name="CATEGORY_ID" type="NUMBER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PARENT_CATEGORY_ID" type="NUMBER"/>
+            <column defaultValue="false" name="IS_TOP_LEVEL" type="CHAR(5 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR2(20 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-5">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="COUNTRY" /></not>
+        </preConditions>
+        <createTable tableName="COUNTRY">
+            <column name="COUNTRY_CODE" type="VARCHAR2(5 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COUNTRY_NAME" type="VARCHAR2(20 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-6">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="CUSTOMER" /></not>
+        </preConditions>
+        <createTable tableName="CUSTOMER">
+            <column name="LOGIN" type="VARCHAR2(50 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD" type="VARCHAR2(20 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMAIL" type="VARCHAR2(20 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PHONENUMBER" type="VARCHAR2(15 BYTE)"/>
+            <column name="SEX" type="VARCHAR2(6 BYTE)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-7">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="PRODUCT" /></not>
+        </preConditions>
+        <createTable tableName="PRODUCT">
+            <column name="PRODUCT_ID" type="NUMBER(11, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR2(30 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRICE" type="NUMBER(18, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="PRODUCT_QUANTITY" type="NUMBER">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="CATEGORY_ID" type="NUMBER(11, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="WIDTH" type="REAL"/>
+            <column name="HEIGT" type="REAL"/>
+            <column name="DESCRIPTION" type="VARCHAR2(100 BYTE)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-8">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="PRODUCT_CART" /></not>
+        </preConditions>
+        <createTable tableName="PRODUCT_CART">
+            <column name="PRODUCT_ID" type="NUMBER(11, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CART_ID" type="NUMBER(11, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRODUCT_QUANTITY" type="NUMBER(5, 0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-9">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="ADDRESS_UNIT" /></not>
+        </preConditions>
+        <createIndex indexName="ADDRESS_UNIT_PK" tableName="ADDRESS_UNIT" unique="true">
+            <column name="ADDRESS_UNIT_ID"/>
+        </createIndex>
+        <addPrimaryKey columnNames="ADDRESS_UNIT_ID" constraintName="ADDRESS_UNIT_PK" tableName="ADDRESS_UNIT"/>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-10">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="CART" /></not>
+        </preConditions>
+        <createIndex indexName="CART_PK" tableName="CART" unique="true">
+            <column name="CART_ID"/>
+        </createIndex>
+        <addPrimaryKey columnNames="CART_ID" constraintName="CART_PK" tableName="CART"/>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-11">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="CATEGORY" /></not>
+        </preConditions>
+        <createIndex indexName="CATEGORY_PK" tableName="CATEGORY" unique="true">
+            <column name="CATEGORY_ID"/>
+        </createIndex>
+        <addPrimaryKey columnNames="CATEGORY_ID" constraintName="CATEGORY_PK" tableName="CATEGORY"/>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-12">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="COUNTRY" /></not>
+        </preConditions>
+        <createIndex indexName="COUNTRY_PK" tableName="COUNTRY" unique="true">
+            <column name="COUNTRY_CODE"/>
+        </createIndex>
+        <addPrimaryKey columnNames="COUNTRY_CODE" constraintName="COUNTRY_PK" tableName="COUNTRY"/>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-13">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="CUSTOMER" /></not>
+        </preConditions>
+        <createIndex indexName="CUSTOMER_PK" tableName="CUSTOMER" unique="true">
+            <column name="LOGIN"/>
+        </createIndex>
+        <addPrimaryKey columnNames="LOGIN" constraintName="CUSTOMER_PK" tableName="CUSTOMER"/>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-14">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="PRODUCT_CART" /></not>
+        </preConditions>
+        <createIndex indexName="PRODUCT_CART_PK" tableName="PRODUCT_CART" unique="true">
+            <column name="PRODUCT_ID"/>
+            <column name="CART_ID"/>
+        </createIndex>
+        <addPrimaryKey columnNames="PRODUCT_ID, CART_ID" constraintName="PRODUCT_CART_PK" tableName="PRODUCT_CART"/>
+    </changeSet>
+    <changeSet author="vysu0216 (generated)" id="1505138856218-15">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="PRODUCT" /></not>
+        </preConditions>
+        <createIndex indexName="PRODUCT_PK" tableName="PRODUCT" unique="true">
+            <column name="PRODUCT_ID"/>
+        </createIndex>
+        <addPrimaryKey columnNames="PRODUCT_ID" constraintName="PRODUCT_PK" tableName="PRODUCT"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,74 @@
+.colorScheme {
+    list-style: none outside none;
+    overflow: hidden;
+    width: 120px;
+}
+.colorScheme a {
+    cursor: pointer;
+    float: left;
+    height: 30px;
+    margin: 0 5px 5px;
+    width: 30px;
+}
+.colorScheme .clr1 {
+    background-color: #8899AA;
+}
+.colorScheme .clr2 {
+    background-color: #aa889e;
+}
+.colorScheme .clr3 {
+    background-color: #8f88aa;
+}
+.colorScheme .clr4 {
+    background-color: #88aaaa;
+}
+.colorScheme .clr5 {
+    background-color: #88aa8a;
+}
+.colorScheme .clr6 {
+    background-color: #aaa188;
+}
+
+#clr1:target ~ #nav, #clr1:target ~ #nav ul {
+    background-color: #8899AA;
+}
+#clr2:target ~ #nav, #clr2:target ~ #nav ul {
+    background-color: #aa889e;
+}
+#clr3:target ~ #nav, #clr3:target ~ #nav ul {
+    background-color: #8f88aa;
+}
+#clr4:target ~ #nav, #clr4:target ~ #nav ul {
+    background-color: #88aaaa;
+}
+#clr5:target ~ #nav, #clr5:target ~ #nav ul {
+    background-color: #88aa8a;
+}
+#clr6:target ~ #nav, #clr6:target ~ #nav ul {
+    background-color: #aaa188;
+}
+
+#clr1:target ~ #nav li:hover > a {
+    background-color: #8899AA;
+    border-color: #8899AA;
+}
+#clr2:target ~ #nav li:hover > a {
+    background-color: #aa889e;
+    border-color: #aa889e;
+}
+#clr3:target ~ #nav li:hover > a {
+    background-color: #8f88aa;
+    border-color: #8f88aa;
+}
+#clr4:target ~ #nav li:hover > a {
+    background-color: #88aaaa;
+    border-color: #88aaaa;
+}
+#clr5:target ~ #nav li:hover > a {
+    background-color: #88aa8a;
+    border-color: #88aa8a;
+}
+#clr6:target ~ #nav li:hover > a {
+    background-color: #aaa188;
+    border-color: #aaa188;
+}
